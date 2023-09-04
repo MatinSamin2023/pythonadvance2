@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Welcome back, {{user.username}}</h1>
+<body style="background-color: rgb(56, 209, 132); text-align: center;"></body>
+{% for post in posts %}
+    <h2>{{post.title}}</h2>
+    <i>{{post.author.name}}</i>
+    <p>{% for tag in post.labels %}<a href="/tag/{{tag.name}}">{{tag.name}}      </a>{% endfor %}</p>
+    {% if post.image %}
+        <img src="static/pictures/{{post.image}}" />
+    {% endif %}
+    {% if post.video %}
+    <video width="320" height="240" controls></video>
+    <source src="static/video/{{post.video}}" />
+    <td>  <a href='/delete/{{post.delete}}'>delete</a>
+        <br>
+        <a href='/edit.html/{{post.edit}}'>edit</a>
+    </td>
+    {% endif %}
+    <p>{{post.content}}</p>
+    <hr />
+{% endfor %}
+<a href="{{url_for('new_post')}}">Create New Post</a>
+<br>
+<a href="{{url_for('logout')}}">logout</a>
+<a href="main.css"></a>
+{% endblock %}

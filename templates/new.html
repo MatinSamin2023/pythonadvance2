@@ -1,0 +1,22 @@
+{%extends 'base.html' %}
+
+{% block title %}New Post{% endblock %}
+{% block content %}
+<h1>Welcome to my website❤</h1>
+<body style="background-color: rgb(235, 198, 245);"></body>
+<form method="POST" action="" enctype='multipart/form-data' name="choose video or image">
+    {{form.hidden_tag()}}
+    <p>Post Title:</p>
+    {{form.title()}}
+    <p>Tags</p>
+    {{form.tags()}}
+    <p>Content</p>
+    {{form.content()}}
+    <hr>
+    {{form.picture}}
+    <hr>
+    {{form.video}}
+    <hr>
+    {{form.submit()}}
+</form>
+{% endblock %}
